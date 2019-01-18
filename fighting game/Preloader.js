@@ -1,3 +1,6 @@
+//this file is for loading all resourses png,csv
+
+
 Game.Preloader =function(game){
   this.preloadBar = null ;
 };
