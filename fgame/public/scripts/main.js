@@ -14,6 +14,7 @@ var action = '';
 
 socket.on('fromUser', function(data){
   console.log("Game received action: ", data)
+  console.log(data)
   action = data.input;
 })
 
@@ -292,47 +293,93 @@ update: function(){
   player.body.setSize(15,15,7, 7)
   player2.body.setSize(15,15,7, 7)
 
-    if (action == 'left'){
-       player.body.velocity.x = -250;
-       player.play('walking')
-       // bullet.fireAngle = 180
-       bullet.fireAngle = Phaser.ANGLE_LEFT
-       // bullet.fireAngle = 0
-       action = '';
-     }
-    if (action == 'right'){
-       player.body.velocity.x = 250
-       player.play('walking')
-       // bullet.fireAngle = 0
-       bullet.fireAngle = Phaser.ANGLE_RIGHT
-       // bullet.fireAngle = 180
-       action = '';
-     }
-    if (action == 'jump'){
-       player.body.velocity.y = -250;
-       player.play('walking')
-       // bullet.fireAngle = -90
-       bullet.fireAngle = Phaser.ANGLE_UP
-       // bullet.fireAngle = 90
-       action = '';
-     }
-     if (action == 'duck'){
-       player.body.velocity.y = 250;
-       player.play('walking')
-       // bullet.fireAngle = 90
-       bullet.fireAngle = Phaser.ANGLE_DOWN
-       // bullet.fireAngle = -90
-       action = '';
-     }
-     if (action == 'fire'){
-      bullet.fire()
-      action = '';
-     }
-     if (action == 'punch'){
+    // if (action == 'left'){
+    //    player.body.velocity.x = -250;
+    //    player.play('walking')
+    //    // bullet.fireAngle = 180
+    //    bullet.fireAngle = Phaser.ANGLE_LEFT
+    //    // bullet.fireAngle = 0
+    //    action = '';
+    //  }
+    // if (action == 'right'){
+    //    player.body.velocity.x = 250
+    //    player.play('walking')
+    //    // bullet.fireAngle = 0
+    //    bullet.fireAngle = Phaser.ANGLE_RIGHT
+    //    // bullet.fireAngle = 180
+    //    action = '';
+    //  }
+    // if (action == 'jump'){
+    //    player.body.velocity.y = -250;
+    //    player.play('walking')
+    //    // bullet.fireAngle = -90
+    //    bullet.fireAngle = Phaser.ANGLE_UP
+    //    // bullet.fireAngle = 90
+    //    action = '';
+    //  }
+    //  if (action == 'duck'){
+    //    player.body.velocity.y = 250;
+    //    player.play('walking')
+    //    // bullet.fireAngle = 90
+    //    bullet.fireAngle = Phaser.ANGLE_DOWN
+    //    // bullet.fireAngle = -90
+    //    action = '';
+    //  }
+    //  if (action == 'fire'){
+    //   bullet.fire()
+    //   action = '';
+    //  }
+    //  if (action == 'punch'){
+    //   player.play('attack')
+    //   this.playerMelee(player2)
+    //   action = '';
+    //  }
+
+
+//++++++++++++++++++++
+//Todo
+ player.body.velocity.x = 3*action.s.x;
+ //player.body.velocity.y = 10*action.s.y;
+
+  if (action.s.y < 0){
+        player.body.velocity.y = -250;
+         player.play('walking')
+         // bullet.fireAngle = -90
+         //bullet.fireAngle = Phaser.ANGLE_UP
+         // bullet.fireAngle = 90
+         action = '';
+  }
+
+
+
+  if (action.s.y > 0){
+        player.body.velocity.y = 250;
+         player.play('walking')
+         // bullet.fireAngle = -90
+         //bullet.fireAngle = Phaser.ANGLE_UP
+         // bullet.fireAngle = 90
+         action = '';
+  }
+
+  if (action.a == true){
       player.play('attack')
       this.playerMelee(player2)
-      action = '';
+
      }
+
+   if (action.b == true ){
+      bullet.fire()
+
+     }
+
+
+
+
+
+
+
+
+//++++++++++++++++++++
 
 
 

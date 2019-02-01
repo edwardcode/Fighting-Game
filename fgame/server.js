@@ -64,7 +64,8 @@ MongoClient.connect(MONGODB_URI, (err,db) => {
     //listening events
     socket.on('userInput', function(data) {
       socket.broadcast.emit('fromUser',  {input: data} )
-      // console.log("Received:   ", );
+
+      console.log("Received:   ",data );
     })
     //update all status to the game
     socket.emit();
